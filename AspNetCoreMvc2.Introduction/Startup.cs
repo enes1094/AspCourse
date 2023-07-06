@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreMvc2.Introduction.Model;
 using AspNetCoreMvc2.Introduction.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AspNetCoreMvc2.Introduction
@@ -18,6 +20,8 @@ namespace AspNetCoreMvc2.Introduction
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=SchoolDb; Trusted_Connection=true";
+            services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connection));
             services.AddScoped<ICalculator, Calculator8>();
         }
 
