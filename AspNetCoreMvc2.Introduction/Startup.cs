@@ -29,9 +29,14 @@ namespace AspNetCoreMvc2.Introduction
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
+            env.EnvironmentName = EnvironmentName.Production;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseMvc(ConfigureRoutes);
@@ -40,7 +45,7 @@ namespace AspNetCoreMvc2.Introduction
 
         private void ConfigureRoutes(IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index2}/{id?}");
+            routeBuilder.MapRoute("Default", "{controller=Filter}/{action=Index}/{id?}");
             routeBuilder.MapRoute("MyRoute", "Enes/{controller=Home}/{action=Index3}/{id?}");
         }
     }

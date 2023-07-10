@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Threading.Tasks;
 using AspNetCoreMvc2.Introduction.Entities;
+using AspNetCoreMvc2.Introduction.Filters;
 using AspNetCoreMvc2.Introduction.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +16,10 @@ namespace AspNetCoreMvc2.Introduction.Controllers
         {
             return "Hello from first application";
         }
-
+        [HandleExceptionAtribute(ViewName ="DivideByZeroError",ExceptionType = typeof (DivideByZeroException))]
         public ViewResult Index2()
         {
+            throw new DivideByZeroException();
             return View();
         }
 

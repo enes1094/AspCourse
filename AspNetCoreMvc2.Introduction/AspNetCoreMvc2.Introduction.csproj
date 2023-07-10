@@ -22,4 +22,10 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Shared\DivideByZeroError.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
