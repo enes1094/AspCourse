@@ -9,10 +9,11 @@ namespace AspNetCoreMvc2.Introduction.Model
 {
     public class SchoolContext:DbContext
     {
+       
         public SchoolContext(DbContextOptions<SchoolContext> options):base(options)
         {
 
         }
-        DbSet<Student> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }
