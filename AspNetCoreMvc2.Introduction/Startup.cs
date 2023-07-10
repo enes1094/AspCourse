@@ -23,6 +23,8 @@ namespace AspNetCoreMvc2.Introduction
             var connection = @"Server=(localdb)\mssqllocaldb;Database=SchoolDb; Trusted_Connection=true";
             services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connection));
             services.AddScoped<ICalculator, Calculator8>();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +40,7 @@ namespace AspNetCoreMvc2.Introduction
             {
                 app.UseExceptionHandler("/error");
             }
+            app.UseSession();
 
             app.UseMvc(ConfigureRoutes);
             
