@@ -30,6 +30,8 @@ namespace AspNetCoreMvc2.Introduction
         {
             services.AddMvc();
             services.AddDbContext<SchoolContext>(options => options.UseSqlServer(_configuration["dbConnection"]));
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(_configuration["dbConnection"]));
+
             services.AddIdentity<AppIdentityUser, AppIdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
